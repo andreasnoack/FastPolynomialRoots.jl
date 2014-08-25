@@ -1,0 +1,34 @@
+##################################################
+# Enviroment file set some paths here
+##################################################
+# Set HOMEDIR, e.g.
+#HOMEDIR := /home/thomasm/AMVW/doubleshift
+HOMEDIR := /home/thomasm/work/paper/130801_Watkins_Companion/svn/AMVW/fortran/branches/doubleshift
+
+##################################################
+# Don't change anything!
+TESTDIR := $(HOMEDIR)/tests
+SRCDIR := $(HOMEDIR)/src
+TODIR := $(SRCDIR)/turnovers
+##################################################
+# set path to mpfun f90 files
+MPDIR := $(HOMEDIR)/mpfun
+
+      
+##################################################
+# compiler
+##################################################
+FC := gfortran
+# compiler flags
+FFLAGS := -O3
+# debugging flags
+# FFLAGS := -pg -g
+
+##################################################
+# BLAS and LAPACK
+##################################################
+# Set LIBS parameters for BLAS and LAPACK, e.g.,
+LIBS := /usr/lib/lapack/liblapack.so.3gf /usr/lib/libblas.so.3gf -lm
+# LIBS := -llapack -lblas -lm 
+# LIBS := /usr/lib/liblapack.so.3gf /usr/lib/libblas.so.3gf -lm 
+
