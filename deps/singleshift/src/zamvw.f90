@@ -51,7 +51,7 @@ subroutine zamvw(n,rcoeffs,icoeffs,reigs,ieigs,its,flag)
   complex(kind(1d0)) :: trace, detm, disc, e1, e2
   integer :: ii, nnew, ry
   
-  print*, "here"
+!   print*, "here"
   ry = flag
   flag = 0
   

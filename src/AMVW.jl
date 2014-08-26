@@ -5,6 +5,7 @@ module AMVW
 	using Polynomial: Poly
 	
 	const dpath = joinpath(Pkg.dir("AMVW"), "deps", "libamvwdouble")
+	const spath = joinpath(Pkg.dir("AMVW"), "deps", "libamvwsingle")
 
 	function rootsAMVW(p::Poly{Float64})
 
@@ -18,6 +19,25 @@ module AMVW
 		ccall((:damvw_, dpath), Void,
 			(Ptr{Int32}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Int32}, Ptr{Int32}),
 			&np, pl, reigs, ieigs, its, flag)
+
+		if flag[1] != 0 error("error code: $(flag[1])") end
+		return complex(reigs, ieigs)
+	end
+
+	function rootsAMVW(p::Poly{Complex{Float64}})
+
+		pl = p.a[2:end] ./ p.a[1]
+		plr = real(pl)
+		pli = imag(pl)
+		np = length(pl)
+		reigs = similar(plr)
+		ieigs = similar(plr)
+		its = Array(Int32, np)
+		flag = Int32[0]
+		
+		ccall((:zamvw_, spath), Void,
+			(Ptr{Int32}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Int32}, Ptr{Int32}),
+			&np, plr, pli, reigs, ieigs, its, flag)
 
 		if flag[1] != 0 error("error code: $(flag[1])") end
 		return complex(reigs, ieigs)
