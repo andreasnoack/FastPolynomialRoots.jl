@@ -1,15 +1,15 @@
-using Polynomials
+if isdir(Pkg.dir("Polynomials"))
+	using Polynomials
+end
 
 module AMVW
 
-	using Polynomials: Poly
-	
 	const dpath = joinpath(Pkg.dir("AMVW"), "deps", "libamvwdouble")
 	const spath = joinpath(Pkg.dir("AMVW"), "deps", "libamvwsingle")
 
-	function rootsAMVW(p::Poly{Float64})
+	function rootsAMVW(a::Vector{Float64})
 
-		pl = reverse!(p.a[1:end - 1] ./ p.a[end])
+		pl = reverse!(a[1:end - 1] ./ a[end])
 		np = length(pl)
 		reigs = similar(pl)
 		ieigs = similar(pl)
@@ -24,9 +24,9 @@ module AMVW
 		return complex(reigs, ieigs)
 	end
 
-	function rootsAMVW(p::Poly{Complex{Float64}})
+	function rootsAMVW(a::Vector{Complex{Float64}})
 
-		pl = reverse!(p.a[1:end - 1] ./ p.a[end])
+		pl = reverse!(a[1:end - 1] ./ a[end])
 		plr = real(pl)
 		pli = imag(pl)
 		np = length(pl)
@@ -44,6 +44,11 @@ module AMVW
 	end
 
 	# Promotion
-	rootsAMVW{T<:Integer}(p::Poly{T}) = rootsAMVW(convert(Poly{Float64}, p))
+
+	if isdir(Pkg.dir("Polynomials"))
+		using Polynomials: Poly
+		rootsAMVW(p::Union(Poly{Float64},Poly{Complex{Float64}})) = rootsAMVW(p.a)
+		rootsAMVW{T<:Integer}(p::Poly{T}) = rootsAMVW(convert(Poly{Float64}, p))
+	end
 
 end

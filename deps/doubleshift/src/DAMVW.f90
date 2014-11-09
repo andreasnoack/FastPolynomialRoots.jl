@@ -243,7 +243,7 @@ subroutine DAMVW(NP,POLY,REIGS,IEIGS,ITS,FLAG)
 				call dnormalpoly(1,ie1)
 				re2 = re1
 				ie2 = -ie1
-				print*, "Random shift!"
+				!print*, "Random shift!"
 		    else
 		       call DCDB(N,stop_index,TEMP,QCB) 
 		       call DMQF(TEMP(1:2,:),re1,ie1,re2,ie2)
