@@ -47,7 +47,7 @@ module AMVW
 
 	if isdir(Pkg.dir("Polynomials"))
 		using Polynomials: Poly
-		rootsAMVW(p::Poly{Union(Float64,Complex{Float64})}) = rootsAMVW(p.a)
+		rootsAMVW(p::Union(Poly{Float64},Poly{Complex{Float64}})) = rootsAMVW(p.a)
 		rootsAMVW{T<:Integer}(p::Poly{T}) = rootsAMVW(convert(Poly{Float64}, p))
 	end
 
