@@ -190,7 +190,7 @@ subroutine zamvw2(n,Q,D,C,B,reigs,ieigs,its,flag,tr,rayleigh)
                                 else
                                    shift = complex(s1,0d0)
                                 end if
-				print*, "Random shift!", shift
+				!print*, "Random shift!", shift
 			else
 				call diagblock(n,stop_index,block,Q,D,C,B)
 
