@@ -48,8 +48,9 @@ using Requires
 
     @require Polynomials begin
         using Polynomials: Poly
-        rootsAMVW(p::Union{Poly{Float64},Poly{Complex{Float64}}}) = rootsAMVW(p.a)
-        rootsAMVW{T<:Integer}(p::Poly{T}) = rootsAMVW(convert(Poly{Float64}, p))
+        import Polynomials: roots
+        roots(p::Union{Poly{Float64},Poly{Complex{Float64}}}) = rootsAMVW(p.a)
+        roots{T<:Integer}(p::Poly{T}) = rootsAMVW(convert(Poly{Float64}, p))
     end
 
 end
