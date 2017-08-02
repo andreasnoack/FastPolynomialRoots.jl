@@ -3,7 +3,7 @@ ifeq ($(OS), Windows_NT)
 	SLIB = dll
 else
 	UNAME := $(shell uname)
-	ifeq ($(UNAME), Darwin)		
+	ifeq ($(UNAME), Darwin)
 		SLIB = dylib
 	else
 		SLIB = so
@@ -26,7 +26,7 @@ OBJD = 	doubleshift/src/DAMVW.f90 \
 		doubleshift/src/RESCHECK.f90 \
 		doubleshift/src/balance.f90 \
 		doubleshift/src/init_random_seed.f90 \
-		doubleshift/src/turnovers/DGTO2.f90 
+		doubleshift/src/turnovers/DGTO2.f90
 OBJS =	singleshift/src/balance.f90 \
 		singleshift/src/buildbulge.f90 \
 		singleshift/src/chasebulge.f90 \
