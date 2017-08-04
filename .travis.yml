@@ -19,7 +19,7 @@ addons:
 
 script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-  - julia --check-bounds=yes -e 'Pkg.clone(pwd()); Pkg.build("AMVW"); Pkg.test("AMVW"; coverage=true)'
+  - julia --check-bounds=yes -e 'Pkg.clone(pwd()); Pkg.build("FastPolynomialRoots"); Pkg.test("FastPolynomialRoots"; coverage=true)'
 
 after_success:
-  - julia -e 'cd(Pkg.dir("AMVW")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
+  - julia -e 'cd(Pkg.dir("FastPolynomialRoots")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'

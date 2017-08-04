@@ -1,4 +1,4 @@
-using AMVW, Base.Test, Polynomials
+using Base.Test, FastPolynomialRoots, Polynomials
 
 @testset "Standard normal coefficients" begin
     p = Poly(randn(50))
