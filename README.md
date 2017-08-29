@@ -6,7 +6,7 @@ This package is a Julia wrapper of the Fortran programs accompanying [Fast and B
 
 ## Installation
 ```
-Pkg.clone("https://github.com/andreasnoackjensen/FastPolynomialRoots.jl")
+Pkg.clone("https://github.com/andreasnoack/FastPolynomialRoots.jl")
 Pkg.build("FastPolynomialRoots")
 ```
 
