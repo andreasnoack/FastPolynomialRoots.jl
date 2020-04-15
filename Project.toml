@@ -1,0 +1,16 @@
+name = "FastPolynomialRoots"
+uuid = "1563e8c5-a255-588c-b09d-21601517bb22"
+version = "0.0.1"
+
+[deps]
+Requires = "ae029012-a4dd-5104-9daa-d747884805df"
+
+[compat]
+Requires = "1"
+
+[extras]
+Polynomials = "f27b6e38-b328-58d1-80ce-0feddd5e7a45"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Polynomials", "Test"]

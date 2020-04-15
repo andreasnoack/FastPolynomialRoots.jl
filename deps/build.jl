@@ -1,4 +1,4 @@
 p = pwd()
-cd(Pkg.dir("FastPolynomialRoots/deps/"))
+cd(joinpath(@__DIR__()))
 run(`make`)
 cd(p)
