@@ -4,12 +4,6 @@
 
 This package is a Julia wrapper of the Fortran programs accompanying [Fast and Backward Stable Computation of Roots of Polynomials](http://epubs.siam.org/doi/abs/10.1137/140983434) by Jared L. Aurentz, Thomas Mach, Raf Vandebril and David S. Watkins.
 
-## Installation
-```
-Pkg.clone("https://github.com/andreasnoack/FastPolynomialRoots.jl")
-Pkg.build("FastPolynomialRoots")
-```
-
 ## Usage
 
 The package provides the unexported function `FastPolynomialRoots.rootsFastPolynomialRoots(p::Vector{<:Union{Float64,Complex{Float64}}})`

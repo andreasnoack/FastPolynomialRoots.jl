@@ -1,6 +1,6 @@
 module FastPolynomialRoots
 
-using Requires
+using LibAMVW_jll, Requires
 
 function __init__()
 
@@ -9,9 +9,6 @@ function __init__()
         Polynomials.roots(p::Polynomials.Poly{<:Integer}) = rootsFastPolynomialRoots(convert(Polynomials.Poly{Float64}, p))
     end
 end
-
-const dpath = joinpath(@__DIR__(), "..", "deps", "libamvwdouble")
-const spath = joinpath(@__DIR__(), "..", "deps", "libamvwsingle")
 
 function rootsFastPolynomialRoots(a::Vector{Float64})
 
@@ -22,7 +19,7 @@ function rootsFastPolynomialRoots(a::Vector{Float64})
     its   = Vector{Int32}(undef, np)
     flag  = Int32[0]
 
-    ccall((:damvw_, dpath), Cvoid,
+    ccall((:damvw_, libamvwdouble), Cvoid,
         (Ref{Int32}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Int32}, Ptr{Int32}),
         np, pl, reigs, ieigs, its, flag)
 
@@ -43,7 +40,7 @@ function rootsFastPolynomialRoots(a::Vector{Complex{Float64}})
     its   = Vector{Int32}(undef, np)
     flag  = Int32[0]
 
-    ccall((:zamvw_, spath), Cvoid,
+    ccall((:zamvw_, libamvwsingle), Cvoid,
         (Ref{Int32}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Int32}, Ptr{Int32}),
         np, plr, pli, reigs, ieigs, its, flag)
 
