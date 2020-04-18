@@ -15,12 +15,12 @@ be overwritten to that fast version provided by this package. See the examples b
 ```julia
 julia> using Polynomials, BenchmarkTools
 
-julia> @btime roots(p) setup=(p = Poly(randn(500)));
+julia> @btime roots(p) setup=(p = Polynomial(randn(500)));
   408.564 ms (54 allocations: 3.99 MiB)
 
 julia> using FastPolynomialRoots
 
-julia> @btime roots(p) setup=(p = Poly(randn(500)));
+julia> @btime roots(p) setup=(p = Polynomial(randn(500)));
   46.507 ms (7 allocations: 26.41 KiB)
 ```
 
@@ -33,7 +33,7 @@ julia> using Polynomials, BenchmarkTools, FastPolynomialRoots
 julia> n = 10000
 10000
 
-julia> r = @btime roots(p) setup=(p = Poly(randn(n + 1)));
+julia> r = @btime roots(p) setup=(p = Polynomial(randn(n + 1)));
   15.715 s (13 allocations: 508.38 KiB)
 
 julia> sum(isreal, r)
