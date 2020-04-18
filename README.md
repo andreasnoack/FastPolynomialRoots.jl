@@ -7,21 +7,19 @@ This package is a Julia wrapper of the Fortran programs accompanying [Fast and B
 ## Usage
 
 The package provides the unexported function `FastPolynomialRoots.rootsFastPolynomialRoots(p::Vector{<:Union{Float64,Complex{Float64}}})`
-which computes the roots of the polynomial `p[1] + p[2]*x + p[3]*x^2 + ... + p[k]*x^(k-1)`. If the
-`Polynomials` packages is loaded, the `roots(::Poly)` methods for `Float64` and `Complex{Float64}` will
-be overwritten to that fast version provided by this package. See the examples below.
+which computes the roots of the polynomial `p[1] + p[2]*x + p[3]*x^2 + ... + p[k]*x^(k-1)`. The package also overwrites the `roots(::Polynomial)` methods in the `Polynomials` package for `Float64` and `Complex{Float64}` elements with the fast versions provided by this package. See the examples below.
 
 ## Example 1: Speed up `roots`
 ```julia
 julia> using Polynomials, BenchmarkTools
 
 julia> @btime roots(p) setup=(p = Polynomial(randn(500)));
-  408.564 ms (54 allocations: 3.99 MiB)
+  223.135 ms (23 allocations: 3.97 MiB)
 
 julia> using FastPolynomialRoots
 
 julia> @btime roots(p) setup=(p = Polynomial(randn(500)));
-  46.507 ms (7 allocations: 26.41 KiB)
+  30.786 ms (7 allocations: 26.41 KiB)
 ```
 
 ## Example 2: Roots of a polynomial of degree 10,000
@@ -30,11 +28,10 @@ but can be handled by FastPolynomialRoots.
 ```julia
 julia> using Polynomials, BenchmarkTools, FastPolynomialRoots
 
-julia> n = 10000
-10000
+julia> n = 10000;
 
 julia> r = @btime roots(p) setup=(p = Polynomial(randn(n + 1)));
-  15.715 s (13 allocations: 508.38 KiB)
+  10.290 s (13 allocations: 508.38 KiB)
 
 julia> sum(isreal, r)
 7

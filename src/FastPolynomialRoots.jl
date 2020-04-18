@@ -1,14 +1,9 @@
 module FastPolynomialRoots
 
-using LibAMVW_jll, Requires
+using LibAMVW_jll, Polynomials
 
-function __init__()
-
-    @require Polynomials="f27b6e38-b328-58d1-80ce-0feddd5e7a45" begin
-        Polynomials.roots(p::Union{Polynomials.Poly{Float64},Polynomials.Poly{Complex{Float64}}}) = rootsFastPolynomialRoots(p.a)
-        Polynomials.roots(p::Polynomials.Poly{<:Integer}) = rootsFastPolynomialRoots(convert(Polynomials.Poly{Float64}, p))
-    end
-end
+Polynomials.roots(p::Union{Polynomial{Float64},Polynomial{Complex{Float64}}}) = rootsFastPolynomialRoots(coeffs(p))
+Polynomials.roots(p::Polynomial{<:Integer}) = rootsFastPolynomialRoots(convert(Polynomial{Float64}, p))
 
 function rootsFastPolynomialRoots(a::Vector{Float64})
 
