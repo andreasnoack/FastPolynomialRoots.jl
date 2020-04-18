@@ -5,8 +5,8 @@ using LibAMVW_jll, Requires
 function __init__()
 
     @require Polynomials="f27b6e38-b328-58d1-80ce-0feddd5e7a45" begin
-        Polynomials.roots(p::Union{Polynomials.Poly{Float64},Polynomials.Poly{Complex{Float64}}}) = rootsFastPolynomialRoots(p.a)
-        Polynomials.roots(p::Polynomials.Poly{<:Integer}) = rootsFastPolynomialRoots(convert(Polynomials.Poly{Float64}, p))
+        Polynomials.roots(p::Union{Polynomials.Polynomial{Float64},Polynomials.Polynomial{Complex{Float64}}}) = rootsFastPolynomialRoots(coeffs(p))
+        Polynomials.roots(p::Polynomials.Polynomial{<:Integer}) = rootsFastPolynomialRoots(convert(Polynomials.Polynomial{Float64}, p))
     end
 end
 
