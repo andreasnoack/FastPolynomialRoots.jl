@@ -1,5 +1,5 @@
 # FastPolynomialRoots.jl - Fast and backward stable computation of roots of polynomials
-[![Travis](https://travis-ci.org/andreasnoack/FastPolynomialRoots.jl.svg?branch=master)](https://travis-ci.org/andreasnoack/FastPolynomialRoots.jl)
+[![CI](https://github.com/andreasnoack/FastPolynomialRoots.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/andreasnoack/FastPolynomialRoots.jl/actions/workflows/CI.yml)
 [![Coverage Status](https://coveralls.io/repos/github/andreasnoack/FastPolynomialRoots.jl/badge.svg?branch=master)](https://coveralls.io/github/andreasnoack/FastPolynomialRoots.jl?branch=master)
 
 This package is a Julia wrapper of the Fortran programs accompanying [Fast and Backward Stable Computation of Roots of Polynomials](http://epubs.siam.org/doi/abs/10.1137/140983434) by Jared L. Aurentz, Thomas Mach, Raf Vandebril and David S. Watkins.
