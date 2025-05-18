@@ -1,6 +1,6 @@
 name = "FastPolynomialRoots"
 uuid = "1563e8c5-a255-588c-b09d-21601517bb22"
-version = "1.0.2"
+version = "1.0.3"
 
 [deps]
 LibAMVW_jll = "3420f54a-cca3-5752-a4b4-c8f5453f04ac"
