@@ -1,9 +1,10 @@
 module FastPolynomialRoots
 
-using LibAMVW_jll, Polynomials
+using LibAMVW_jll
+using Polynomials: Polynomials
 
-Polynomials.roots(p::Union{Polynomial{Float64},Polynomial{Complex{Float64}}}) = rootsFastPolynomialRoots(coeffs(p))
-Polynomials.roots(p::Polynomial{T}) where {T <:Integer} = roots(convert(Polynomial{float(T)}, p))
+roots(p::Union{Polynomials.Polynomial{Float64},Polynomials.Polynomial{Complex{Float64}}}) = rootsFastPolynomialRoots(Polynomials.coeffs(p))
+roots(p::Polynomials.Polynomial{T}) where {T <:Integer} = roots(convert(Polynomials.Polynomial{float(T)}, p))
 
 function rootsFastPolynomialRoots(a::Vector{Float64})
 

@@ -11,14 +11,12 @@ which computes the roots of the polynomial `p[1] + p[2]*x + p[3]*x^2 + ... + p[k
 
 ## Example 1: Speed up `roots`
 ```julia
-julia> using Polynomials, BenchmarkTools
+julia> using Polynomials, BenchmarkTools, FastPolynomialRoots
 
 julia> @btime roots(p) setup=(p = Polynomial(randn(500)));
   223.135 ms (23 allocations: 3.97 MiB)
 
-julia> using FastPolynomialRoots
-
-julia> @btime roots(p) setup=(p = Polynomial(randn(500)));
+julia> @btime FastPolynomialRoots.roots(p) setup=(p = Polynomial(randn(500)));
   30.786 ms (7 allocations: 26.41 KiB)
 ```
 
@@ -30,7 +28,7 @@ julia> using Polynomials, BenchmarkTools, FastPolynomialRoots
 
 julia> n = 10000;
 
-julia> r = @btime roots(p) setup=(p = Polynomial(randn(n + 1)));
+julia> r = @btime FastPolynomialRoots.roots(p) setup=(p = Polynomial(randn(n + 1)));
   10.290 s (13 allocations: 508.38 KiB)
 
 julia> sum(isreal, r)
